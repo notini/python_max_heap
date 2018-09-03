@@ -48,6 +48,14 @@ class MaxHeap:
 	def insertKey(self, heap, key):
 		heap.append(float('-inf'))
 		self.increaseKey(heap, len(heap) - 1, key)
+		
+	#Removes value in idx from the heap.
+	def removeKey(self, heap, idx):
+		heapsize = len(heap) - 1
+		heap[idx] = heap[len(heap) - 1]
+		del heap[len(heap) - 1]
+		heapsize -= 1
+		self.max_heapify(heap, heapsize, idx)		
 				
 	#Increases value on 'idx' to the 'key' value, unless 'key' is smaller than current heap[idx] value.
 	def increaseKey(self, heap, idx, key):
